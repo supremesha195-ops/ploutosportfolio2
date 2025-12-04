@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: denarius-2025
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist

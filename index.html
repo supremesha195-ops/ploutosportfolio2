@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENARIUS 2025</title>
+    <!-- Google Fonts for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-mono {
+        font-family: 'Roboto Mono', monospace;
+      }
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #333;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #555;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: #777;
+      }
+
+      /* NEW THEME: Rich Gray & Metallic Gold Overrides for Dark Mode */
+      html.dark {
+          /* Define CSS variables for the new theme colors */
+          --color-primary-bg: #1F2022; /* Rich Gray */
+          --color-accent-gold: #D4AF37; /* Metallic Gold */
+          --color-text-light: #E0E0E0; /* Off-white for main text */
+          --color-text-medium: #A0A0A0; /* Light gray for secondary text */
+          --color-bg-card: #2A2B2D; /* Slightly lighter rich gray for cards/sections */
+          --color-bg-darker: #1A1B1D; /* Slightly darker rich gray for deeper sections/hover */
+          --color-border-dark: #333436; /* Dark border */
+          --color-focus-offset: #000; /* Black for strong focus ring contrast */
+
+          /* Apply to base html element */
+          background-color: var(--color-primary-bg);
+          color: var(--color-text-light);
+      }
+
+      /* Override common Tailwind classes in dark mode to use the new theme colors */
+      html.dark .bg-gray-900 { background-color: var(--color-primary-bg) !important; }
+      html.dark .bg-gray-800 { background-color: var(--color-bg-card) !important; }
+      html.dark .bg-gray-50 { background-color: var(--color-bg-card) !important; } /* Default light background for cards */
+      html.dark .bg-white { background-color: var(--color-bg-card) !important; } /* Default white cards */
+      html.dark .bg-gray-100 { background-color: var(--color-primary-bg) !important; } /* Footer */
+
+      html.dark .text-gray-900 { color: var(--color-accent-gold) !important; } /* Main titles and primary text */
+      html.dark .text-amber-400 { color: var(--color-accent-gold) !important; } /* All existing gold text */
+      html.dark .text-gray-700 { color: var(--color-text-light) !important; } /* General text */
+      html.dark .text-gray-600 { color: var(--color-text-medium) !important; } /* Secondary text */
+      html.dark .text-gray-500 { color: var(--color-text-medium) !important; } /* Tertiary text */
+      html.dark .text-gray-200 { color: var(--color-text-light) !important; } /* Body default text */
+
+      html.dark .border-gray-200 { border-color: var(--color-border-dark) !important; }
+      html.dark .border-gray-300 { border-color: var(--color-border-dark) !important; }
+      html.dark .border-gray-600 { border-color: var(--color-border-dark) !important; }
+      html.dark .border-gray-700 { border-color: var(--color-border-dark) !important; }
+      html.dark .border-amber-400 { border-color: var(--color-accent-gold) !important; } /* Gold border for outline elements */
+
+      /* Hover states - important to override with !important */
+      html.dark .hover\:bg-gray-800:hover { background-color: var(--color-bg-darker) !important; }
+      html.dark .hover\:bg-gray-700:hover { background-color: var(--color-bg-darker) !important; }
+      html.dark .hover\:bg-gray-900:hover { background-color: var(--color-bg-darker) !important; }
+
+      /* Specific element adjustments */
+      /* Hero section gradient for homepage */
+      html.dark .from-gray-800 { --tw-gradient-from: var(--color-bg-darker) var(--tw-gradient-from-position) !important; }
+      html.dark .to-gray-950 { --tw-gradient-to: var(--color-primary-bg) var(--tw-gradient-to-position) !important; }
+      html.dark .dark\:from-gray-900 { --tw-gradient-from: var(--color-primary-bg) var(--tw-gradient-from-position) !important; }
+      html.dark .dark\:to-gray-800 { --tw-gradient-to: var(--color-bg-card) var(--tw-gradient-to-position) !important; }
+      
+      /* Buttons focus ring offset */
+      html.dark .focus\:ring-offset-gray-50 { --tw-ring-offset-color: var(--color-focus-offset) !important; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.10.0",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "uuid": "https://aistudiocdn.com/uuid@^13.0.0",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "vite": "https://aistudiocdn.com/vite@^7.2.6",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "url": "https://aistudiocdn.com/url@^0.11.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
